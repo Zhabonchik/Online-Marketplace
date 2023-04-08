@@ -1,2 +1,2 @@
 # Online-Marketplace
-Test of changes Nikita
+Test of Nikita
