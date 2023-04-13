@@ -1,6 +1,9 @@
 package by.fpmibsu.OnlineMarketplace.entity;
 
 public class Catalog {
+    public Catalog() {
+    }
+
     public Catalog(int ID_vendor_, int ID_product_, String category_, double price_, int number_in_stock_) {
         this.ID_vendor_ = ID_vendor_;
         this.ID_product_ = ID_product_;
@@ -47,6 +50,17 @@ public class Catalog {
 
     public void setNumber_in_stock_(int number_in_stock_) {
         this.number_in_stock_ = number_in_stock_;
+    }
+
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "ID_vendor_=" + ID_vendor_ +
+                ", ID_product_=" + ID_product_ +
+                ", category_='" + category_ + '\'' +
+                ", price_=" + price_ +
+                ", number_in_stock_=" + number_in_stock_ +
+                '}';
     }
 
     private int ID_vendor_;

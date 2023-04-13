@@ -1,6 +1,8 @@
 package by.fpmibsu.OnlineMarketplace.entity;
 
 public class Vendor {
+    public Vendor() {
+    }
 
     public Vendor(int ID_vendor_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
         this.ID_vendor_ = ID_vendor_;
@@ -66,6 +68,19 @@ public class Vendor {
 
     public void setID_image_(int ID_image_) {
         this.ID_image_ = ID_image_;
+    }
+
+    @Override
+    public String toString() {
+        return "Vendor{" +
+                "ID_vendor_=" + ID_vendor_ +
+                ", login_='" + login_ + '\'' +
+                ", password_='" + password_ + '\'' +
+                ", name_='" + name_ + '\'' +
+                ", surname_='" + surname_ + '\'' +
+                ", contacts_='" + contacts_ + '\'' +
+                ", ID_image_=" + ID_image_ +
+                '}';
     }
 
     private int ID_vendor_;

@@ -1,5 +1,8 @@
 package by.fpmibsu.OnlineMarketplace.entity;
 public class Product {
+    public Product() {
+    }
+
     public Product(int ID_product_, int name_, String description_, int ID_image_) {
         this.ID_product_ = ID_product_;
         this.name_ = name_;
@@ -39,8 +42,18 @@ public class Product {
         this.ID_image_ = ID_image_;
     }
 
-    private int ID_product_;
-    private int name_;
-    private String description_;
-    private int ID_image_;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "ID_product_=" + ID_product_ +
+                ", name_=" + name_ +
+                ", description_='" + description_ + '\'' +
+                ", ID_image_=" + ID_image_ +
+                '}';
+    }
+
+    protected int ID_product_;
+    protected int name_;
+    protected String description_;
+    protected int ID_image_;
 }

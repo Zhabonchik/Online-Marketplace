@@ -1,6 +1,9 @@
 package by.fpmibsu.OnlineMarketplace.entity;
 
 public class Order {
+    public Order() {
+    }
+
     public Order(int ID_user_, int ID_product_, int ID_vendor_, String payment_method_, String delivery_date_, String delivery_method_, String comments_) {
         this.ID_user_ = ID_user_;
         this.ID_product_ = ID_product_;
@@ -65,6 +68,19 @@ public class Order {
 
     public void setComments_(String comments_) {
         this.comments_ = comments_;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "ID_user_=" + ID_user_ +
+                ", ID_product_=" + ID_product_ +
+                ", ID_vendor_=" + ID_vendor_ +
+                ", payment_method_='" + payment_method_ + '\'' +
+                ", delivery_date_='" + delivery_date_ + '\'' +
+                ", delivery_method_='" + delivery_method_ + '\'' +
+                ", comments_='" + comments_ + '\'' +
+                '}';
     }
 
     private int ID_user_;
