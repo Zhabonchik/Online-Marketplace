@@ -4,23 +4,23 @@ public class Phone extends Product{
     public Phone() {
     }
 
-    public Phone(int ID_product_, int name_, String description_, int ID_image_, String manufacturer_,
+    public Phone(long ID_product_, String name_, String description_, long ID_image_, String manufacturer_,
                  String operational_system_, int RAM_, int ROM_, int production_year_,
                  float screen_diagonal_, String screen_resolution_, int battery_capacity_,
-                 String camera_megapixels_, float width_, float length_, float sickness_, float weight_) {
+                 String camera_megapixels_, float width_, float length_, float thickness_, float weight_) {
         super(ID_product_, name_, description_, ID_image_);
-        this.manufacturer_ = manufacturer_;
-        this.operational_system_ = operational_system_;
+        this.manufacturer_ = manufacturer_.trim();
+        this.operational_system_ = operational_system_.trim();
         this.RAM_ = RAM_;
         this.ROM_ = ROM_;
         this.production_year_ = production_year_;
         this.screen_diagonal_ = screen_diagonal_;
-        this.screen_resolution_ = screen_resolution_;
+        this.screen_resolution_ = screen_resolution_.trim();
         this.battery_capacity_ = battery_capacity_;
-        this.camera_megapixels_ = camera_megapixels_;
+        this.camera_megapixels_ = camera_megapixels_.trim();
         this.width_ = width_;
         this.length_ = length_;
-        this.sickness_ = sickness_;
+        this.thickness_ = thickness_;
         this.weight_ = weight_;
     }
 
@@ -29,7 +29,7 @@ public class Phone extends Product{
     }
 
     public void setManufacturer_(String manufacturer_) {
-        this.manufacturer_ = manufacturer_;
+        this.manufacturer_ = manufacturer_.trim();
     }
 
     public String getOperational_system_() {
@@ -37,7 +37,7 @@ public class Phone extends Product{
     }
 
     public void setOperational_system_(String operational_system_) {
-        this.operational_system_ = operational_system_;
+        this.operational_system_ = operational_system_.trim();
     }
 
     public int getRAM_() {
@@ -77,7 +77,7 @@ public class Phone extends Product{
     }
 
     public void setScreen_resolution_(String screen_resolution_) {
-        this.screen_resolution_ = screen_resolution_;
+        this.screen_resolution_ = screen_resolution_.trim();
     }
 
     public int getBattery_capacity_() {
@@ -93,7 +93,7 @@ public class Phone extends Product{
     }
 
     public void setCamera_megapixels_(String camera_megapixels_) {
-        this.camera_megapixels_ = camera_megapixels_;
+        this.camera_megapixels_ = camera_megapixels_.trim();
     }
 
     public float getWidth_() {
@@ -112,12 +112,12 @@ public class Phone extends Product{
         this.length_ = length_;
     }
 
-    public float getSickness_() {
-        return sickness_;
+    public float getThickness_() {
+        return thickness_;
     }
 
-    public void setSickness_(float sickness_) {
-        this.sickness_ = sickness_;
+    public void setThickness_(float sickness_) {
+        this.thickness_ = sickness_;
     }
 
     public float getWeight_() {
@@ -146,7 +146,7 @@ public class Phone extends Product{
                 ", camera_megapixels_='" + camera_megapixels_ + '\'' +
                 ", width_=" + width_ +
                 ", length_=" + length_ +
-                ", sickness_=" + sickness_ +
+                ", sickness_=" + thickness_ +
                 ", weight_=" + weight_ +
                 '}';
     }
@@ -162,6 +162,6 @@ public class Phone extends Product{
     private String camera_megapixels_;
     private float width_;
     private float length_;
-    private float sickness_;
+    private float thickness_;
     private float weight_;
 }

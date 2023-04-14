@@ -3,27 +3,27 @@ public class Product {
     public Product() {
     }
 
-    public Product(int ID_product_, int name_, String description_, int ID_image_) {
+    public Product(long ID_product_, String name_, String description_, long ID_image_) {
         this.ID_product_ = ID_product_;
-        this.name_ = name_;
-        this.description_ = description_;
+        this.name_ = name_.trim();
+        this.description_ = description_.trim();
         this.ID_image_ = ID_image_;
     }
 
-    public int getID_product_() {
+    public long getID_product_() {
         return ID_product_;
     }
 
-    public void setID_product_(int ID_product_) {
+    public void setID_product_(long ID_product_) {
         this.ID_product_ = ID_product_;
     }
 
-    public int getName_() {
+    public String getName_() {
         return name_;
     }
 
-    public void setName_(int name_) {
-        this.name_ = name_;
+    public void setName_(String name_) {
+        this.name_ = name_.trim();
     }
 
     public String getDescription_() {
@@ -31,14 +31,14 @@ public class Product {
     }
 
     public void setDescription_(String description_) {
-        this.description_ = description_;
+        this.description_ = description_.trim();
     }
 
-    public int getID_image_() {
+    public long getID_image_() {
         return ID_image_;
     }
 
-    public void setID_image_(int ID_image_) {
+    public void setID_image_(long ID_image_) {
         this.ID_image_ = ID_image_;
     }
 
@@ -52,8 +52,8 @@ public class Product {
                 '}';
     }
 
-    protected int ID_product_;
-    protected int name_;
+    protected long ID_product_;
+    protected String name_;
     protected String description_;
-    protected int ID_image_;
+    protected long ID_image_;
 }

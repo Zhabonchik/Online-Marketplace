@@ -4,16 +4,16 @@ public class Image {
     public Image() {
     }
 
-    public Image(int ID_image_, String link_) {
+    public Image(long ID_image_, String link_) {
         this.ID_image_ = ID_image_;
         this.link_ = link_;
     }
 
-    public int getID_image_() {
+    public long getID_image_() {
         return ID_image_;
     }
 
-    public void setID_image_(int ID_image_) {
+    public void setID_image_(long ID_image_) {
         this.ID_image_ = ID_image_;
     }
 
@@ -33,6 +33,6 @@ public class Image {
                 '}';
     }
 
-    private int ID_image_;
+    private long ID_image_;
     private String link_;
 }

@@ -4,7 +4,7 @@ public class Vendor {
     public Vendor() {
     }
 
-    public Vendor(int ID_vendor_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
+    public Vendor(long ID_vendor_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
         this.ID_vendor_ = ID_vendor_;
         this.login_ = login_;
         this.password_ = password_;
@@ -14,11 +14,11 @@ public class Vendor {
         this.ID_image_ = ID_image_;
     }
 
-    public int getID_vendor_() {
+    public long getID_vendor_() {
         return ID_vendor_;
     }
 
-    public void setID_vendor_(int ID_vendor_) {
+    public void setID_vendor_(long ID_vendor_) {
         this.ID_vendor_ = ID_vendor_;
     }
 
@@ -83,7 +83,7 @@ public class Vendor {
                 '}';
     }
 
-    private int ID_vendor_;
+    private long ID_vendor_;
     private String login_;
     private String password_;
     private String name_;

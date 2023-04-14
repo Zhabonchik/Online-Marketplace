@@ -4,7 +4,7 @@ public class Catalog {
     public Catalog() {
     }
 
-    public Catalog(int ID_vendor_, int ID_product_, String category_, double price_, int number_in_stock_) {
+    public Catalog(long ID_vendor_, long ID_product_, String category_, double price_, long number_in_stock_) {
         this.ID_vendor_ = ID_vendor_;
         this.ID_product_ = ID_product_;
         this.category_ = category_;
@@ -12,19 +12,19 @@ public class Catalog {
         this.number_in_stock_ = number_in_stock_;
     }
 
-    public int getID_vendor_() {
+    public long getID_vendor_() {
         return ID_vendor_;
     }
 
-    public void setID_vendor_(int ID_vendor_) {
+    public void setID_vendor_(long ID_vendor_) {
         this.ID_vendor_ = ID_vendor_;
     }
 
-    public int getID_product_() {
+    public long getID_product_() {
         return ID_product_;
     }
 
-    public void setID_product_(int ID_product_) {
+    public void setID_product_(long ID_product_) {
         this.ID_product_ = ID_product_;
     }
 
@@ -44,11 +44,11 @@ public class Catalog {
         this.price_ = price_;
     }
 
-    public int getNumber_in_stock_() {
+    public long getNumber_in_stock_() {
         return number_in_stock_;
     }
 
-    public void setNumber_in_stock_(int number_in_stock_) {
+    public void setNumber_in_stock_(long number_in_stock_) {
         this.number_in_stock_ = number_in_stock_;
     }
 
@@ -63,9 +63,9 @@ public class Catalog {
                 '}';
     }
 
-    private int ID_vendor_;
-    private int ID_product_;
+    private long ID_vendor_;
+    private long ID_product_;
     private String category_;
     private double price_;
-    private int number_in_stock_;
+    private long number_in_stock_;
 }

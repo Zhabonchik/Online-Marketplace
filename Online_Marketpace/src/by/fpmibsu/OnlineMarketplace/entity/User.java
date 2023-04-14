@@ -4,7 +4,7 @@ enum Role{
     Customer
 }
 public class User {
-    public User(int ID_user_, Role role_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
+    public User(long ID_user_, Role role_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
         this.ID_user_ = ID_user_;
         this.role_ = role_;
         this.login_ = login_;
@@ -15,11 +15,11 @@ public class User {
         this.ID_image_ = ID_image_;
     }
 
-    public int getID_user_() {
+    public long getID_user_() {
         return ID_user_;
     }
 
-    public void setID_user_(int ID_user_) {
+    public void setID_user_(long ID_user_) {
         this.ID_user_ = ID_user_;
     }
 
@@ -79,7 +79,7 @@ public class User {
         this.ID_image_ = ID_image_;
     }
 
-    private int ID_user_;
+    private long ID_user_;
     private Role role_;
     private String login_;
     private String password_;

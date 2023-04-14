@@ -4,7 +4,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int ID_user_, int ID_product_, int ID_vendor_, String payment_method_, String delivery_date_, String delivery_method_, String comments_) {
+    public Order(long ID_user_, long ID_product_, long ID_vendor_, String payment_method_, String delivery_date_, String delivery_method_, String comments_) {
         this.ID_user_ = ID_user_;
         this.ID_product_ = ID_product_;
         this.ID_vendor_ = ID_vendor_;
@@ -14,27 +14,27 @@ public class Order {
         this.comments_ = comments_;
     }
 
-    public int getID_user_() {
+    public long getID_user_() {
         return ID_user_;
     }
 
-    public void setID_user_(int ID_user_) {
+    public void setID_user_(long ID_user_) {
         this.ID_user_ = ID_user_;
     }
 
-    public int getID_product_() {
+    public long getID_product_() {
         return ID_product_;
     }
 
-    public void setID_product_(int ID_product_) {
+    public void setID_product_(long ID_product_) {
         this.ID_product_ = ID_product_;
     }
 
-    public int getID_vendor_() {
+    public long getID_vendor_() {
         return ID_vendor_;
     }
 
-    public void setID_vendor_(int ID_vendor_) {
+    public void setID_vendor_(long ID_vendor_) {
         this.ID_vendor_ = ID_vendor_;
     }
 
@@ -83,9 +83,9 @@ public class Order {
                 '}';
     }
 
-    private int ID_user_;
-    private int ID_product_;
-    private int ID_vendor_;
+    private long ID_user_;
+    private long ID_product_;
+    private long ID_vendor_;
     private String payment_method_;
     private String delivery_date_;
     private String delivery_method_;
