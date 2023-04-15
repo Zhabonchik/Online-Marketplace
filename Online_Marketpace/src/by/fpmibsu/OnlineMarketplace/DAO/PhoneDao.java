@@ -157,4 +157,255 @@ public class PhoneDao extends AbstractDao<Phone>{
         }
         return true;
     }
+
+    public List<Phone> findByRAM(int RAM) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE RAM = ?");
+            preparedStatement.setInt(1, RAM);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+    public List<Phone> findByROM(int ROM) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE ROM = ?");
+            preparedStatement.setInt(1, ROM);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+    public List<Phone> findByManufacturer(String Manufacturer) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE Manufacturer = ?");
+            preparedStatement.setString(1, Manufacturer);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+
+    public List<Phone> findByRAM_ROM(int RAM, int ROM) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE RAM = ?AND ROM = ?");
+            preparedStatement.setInt(1, RAM);
+            preparedStatement.setInt(2, ROM);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+    public List<Phone> findByBatteryCapacity(int capacity) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE Battery_Capacity = ?");
+            preparedStatement.setLong(1, capacity);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+    public List<Phone> findByRAM_ROM_CAPACITY_PRODUCTION_YEAR(int RAM, int ROM, int capacity, int year) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE RAM = ? AND ROM = ? AND Battery_Capacity = ? AND Production_Year = ?");
+            preparedStatement.setInt(1, RAM);
+            preparedStatement.setInt(2, ROM);
+            preparedStatement.setInt(3, capacity);
+            preparedStatement.setInt(4, year);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
+    public List<Phone> findByPRODUCTION_YEAR(int year) throws DaoException {
+        List <Phone> phones = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Phone WHERE Production_Year = ?");
+            preparedStatement.setInt(1, year);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Phone phone = new Phone();
+                phone.setID_product_(resultSet.getLong("ID_Product"));
+                phone.setName_(resultSet.getString("Name"));
+                phone.setManufacturer_(resultSet.getString("Manufacturer"));
+                phone.setDescription_(resultSet.getString("Description"));
+                phone.setID_image_(resultSet.getLong("ID_Image"));
+                phone.setOperational_system_(resultSet.getString("Operational_System"));
+                phone.setRAM_(resultSet.getInt("RAM"));
+                phone.setROM_(resultSet.getInt("ROM"));
+                phone.setProduction_year_(resultSet.getInt("Production_Year"));
+                phone.setScreen_diagonal_(resultSet.getFloat("Screen_Diagonal"));
+                phone.setScreen_resolution_(resultSet.getString("Screen_Resolution"));
+                phone.setBattery_capacity_(resultSet.getInt("Battery_Capacity"));
+                phone.setCamera_megapixels_(resultSet.getString("Camera_Megapixels"));
+                phone.setWidth_(resultSet.getFloat("Width"));
+                phone.setLength_(resultSet.getFloat("Length"));
+                phone.setThickness_(resultSet.getFloat("Thickness"));
+                phone.setWeight_(resultSet.getFloat("Weight"));
+                phones.add(phone);
+            }
+        } catch (SQLException e){
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+        }
+        return phones;
+    }
 }
