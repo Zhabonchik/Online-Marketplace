@@ -10,9 +10,9 @@ public abstract class AbstractDao <T> {
     }
     public abstract List<T> findAll() throws DaoException;
     public abstract T findById(long id) throws DaoException;
-    public abstract boolean delete(long id) throws DaoException;
-    public abstract boolean delete(T entity) throws DaoException;
-    public abstract boolean create(T entity) throws DaoException;
+    public abstract int delete(long id) throws DaoException;
+    public abstract int delete(T entity) throws DaoException;
+    public abstract int create(T entity) throws DaoException;
     public abstract boolean update(T entity) throws DaoException;
     public void close(Statement statement){
         try{

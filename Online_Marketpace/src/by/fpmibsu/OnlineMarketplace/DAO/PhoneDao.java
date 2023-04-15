@@ -83,7 +83,7 @@ public class PhoneDao extends AbstractDao<Phone>{
     }
 
     @Override
-    public boolean delete(long id) throws DaoException {
+    public int delete(long id) throws DaoException {
         PreparedStatement preparedStatement = null;
         int result;
         try{
@@ -93,16 +93,16 @@ public class PhoneDao extends AbstractDao<Phone>{
         } catch(SQLException e){
             throw new DaoException(e);
         }
-        return result > 0;
+        return result;
     }
 
     @Override
-    public boolean delete(Phone entity) throws DaoException {
+    public int delete(Phone entity) throws DaoException {
         return delete(entity.getID_product_());
     }
 
     @Override
-    public boolean create(Phone entity) throws DaoException{
+    public int create(Phone entity) throws DaoException{
         String query = "INSERT INTO Phone VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int result;
         try {
@@ -127,33 +127,37 @@ public class PhoneDao extends AbstractDao<Phone>{
         } catch(SQLException e){
             throw new DaoException(e);
         }
-        return result > 0;
+        return result;
     }
 
     @Override
     public boolean update(Phone entity) throws DaoException {
+        int result;
+        Statement statement = null;
         try {
-            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Phone WHERE ID_Product = %d", entity.getID_product_()));
-            resultSet.updateString(1, entity.getName_());
-            resultSet.updateString(2, entity.getManufacturer_());
-            resultSet.updateString(3, entity.getDescription_());
-            resultSet.updateLong(4, entity.getID_image_());
-            resultSet.updateString(5, entity.getOperational_system_());
-            resultSet.updateInt(6, entity.getRAM_());
-            resultSet.updateInt(7, entity.getROM_());
-            resultSet.updateInt(8, entity.getProduction_year_());
-            resultSet.updateFloat(9, entity.getScreen_diagonal_());
-            resultSet.updateString(10, entity.getScreen_resolution_());
-            resultSet.updateInt(11, entity.getBattery_capacity_());
-            resultSet.updateString(12, entity.getCamera_megapixels_());
-            resultSet.updateFloat(13, entity.getWidth_());
-            resultSet.updateFloat(14, entity.getLength_());
-            resultSet.updateFloat(15, entity.getThickness_());
-            resultSet.updateFloat(16, entity.getWeight_());
+            resultSet.updateString("Name", entity.getName_());
+            resultSet.updateString("Manufacturer", entity.getManufacturer_());
+            resultSet.updateString("Description", entity.getDescription_());
+            resultSet.updateLong("ID_Image", entity.getID_image_());
+            resultSet.updateString("Operational_System", entity.getOperational_system_());
+            resultSet.updateInt("RAM", entity.getRAM_());
+            resultSet.updateInt("ROM", entity.getROM_());
+            resultSet.updateInt("Production_Year", entity.getProduction_year_());
+            resultSet.updateFloat("Screen_Diagonal", entity.getScreen_diagonal_());
+            resultSet.updateString("Screen_Resolution", entity.getScreen_resolution_());
+            resultSet.updateInt("Battery_Capacity", entity.getBattery_capacity_());
+            resultSet.updateString("Camera_Megapixels", entity.getCamera_megapixels_());
+            resultSet.updateFloat("Width", entity.getWidth_());
+            resultSet.updateFloat("Length", entity.getLength_());
+            resultSet.updateFloat("Thickness", entity.getThickness_());
+            resultSet.updateFloat("Weight", entity.getWeight_());
             resultSet.updateRow();
         } catch(SQLException e){
             throw new DaoException(e);
+        } finally{
+            close(statement);
         }
         return true;
     }
