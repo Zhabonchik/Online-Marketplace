@@ -135,7 +135,7 @@ public class Phone extends Product{
                 ", name_=" + name_ +
                 ", description_='" + description_ + '\'' +
                 ", ID_image_=" + ID_image_ +
-                "manufacturer_='" + manufacturer_ + '\'' +
+                ", manufacturer_='" + manufacturer_ + '\'' +
                 ", operational_system_='" + operational_system_ + '\'' +
                 ", RAM_=" + RAM_ +
                 ", ROM_=" + ROM_ +
