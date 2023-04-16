@@ -1,9 +1,9 @@
 package by.fpmibsu.OnlineMarketplace.entity;
-enum Role{
-    Admin,
-    Customer
-}
+
 public class User {
+    public User() {
+    }
+
     public User(long ID_user_, Role role_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
         this.ID_user_ = ID_user_;
         this.role_ = role_;
@@ -71,12 +71,15 @@ public class User {
         this.contacts_ = contacts_;
     }
 
-    public int getID_image_() {
+    public long getID_image_() {
         return ID_image_;
     }
 
-    public void setID_image_(int ID_image_) {
+    public void setID_image_(long ID_image_) {
         this.ID_image_ = ID_image_;
+    }
+    public boolean correctPassword(String password){
+        return password.equals(this.password_);
     }
 
     private long ID_user_;
@@ -86,5 +89,5 @@ public class User {
     private String name_;
     private String surname_;
     private String contacts_;
-    private int ID_image_;
+    private long ID_image_;
 }

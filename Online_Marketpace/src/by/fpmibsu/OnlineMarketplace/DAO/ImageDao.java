@@ -80,12 +80,11 @@ public class ImageDao extends AbstractDao<Image>{
     @Override
     public int create(Image entity) throws DaoException {
         int result;
-        String query = "INSERT INTO Image VALUES (?,?)";
+        String query = "INSERT INTO Image VALUES (?)";
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setLong(1, entity.getID_image_());
-            preparedStatement.setString(2,entity.getLink_());
+            preparedStatement.setString(1,entity.getLink_());
             result = preparedStatement.executeUpdate();
         }catch(SQLException e){
             throw new DaoException(e);
