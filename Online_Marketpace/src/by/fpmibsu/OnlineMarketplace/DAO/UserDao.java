@@ -10,10 +10,10 @@ import java.util.List;
 import by.fpmibsu.OnlineMarketplace.OtherClasses.PasswordHash;
 
 public class UserDao extends AbstractDao<User> {
-    private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM User";
-    private static final String SQL_SELECT_BY_ID = "SELECT * FROM User WHERE ID_User=?";
-    private static final String SQL_SELECT_BY_LOGIN = "SELECT * FROM User WHERE Login=?";
-    private static final String SQL_DELETE_BY_ID = "DELETE FROM User WHERE ID_User=?";
+    private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM Users";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM Users WHERE ID_User=?";
+    private static final String SQL_SELECT_BY_LOGIN = "SELECT * FROM Users WHERE Login=?";
+    private static final String SQL_DELETE_BY_ID = "DELETE FROM Users WHERE ID_User=?";
     @Override
     public List<User> findAll() throws DaoException {
         List<User> users = new ArrayList<>();
@@ -117,6 +117,8 @@ public class UserDao extends AbstractDao<User> {
             result = preparedStatement.executeUpdate();
         } catch(SQLException e){
             throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
         }
         return result;
     }
@@ -128,17 +130,23 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     public int create(User entity) throws DaoException {
-        String query = "INSERT INTO User VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Users VALUES (?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = null;
         int result;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query);
             String password = "";
             try {
                 password = PasswordHash.getHash(entity.getPassword_());
             } catch (Exception e){
 
             }
-            boolean isAdmin = entity.getRole_().equals(Role.Admin);
+            boolean isAdmin;
+            if(entity.getRole_().equals(Role.Admin)){
+                isAdmin = true;
+            } else {
+                isAdmin = false;
+            }
             preparedStatement.setBoolean(1, isAdmin);
             preparedStatement.setString(2, entity.getLogin_());
             preparedStatement.setString(3, password);
@@ -149,6 +157,8 @@ public class UserDao extends AbstractDao<User> {
             result = preparedStatement.executeUpdate();
         } catch(SQLException e){
             throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
         }
         return result;
     }
@@ -159,7 +169,7 @@ public class UserDao extends AbstractDao<User> {
         int result;
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM User WHERE ID_User = %d", entity.getID_user_()));
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Users WHERE ID_User = %d", entity.getID_user_()));
             String password = "";
             try {
                 password = PasswordHash.getHash(entity.getPassword_());
@@ -168,7 +178,7 @@ public class UserDao extends AbstractDao<User> {
             }
             boolean isAdmin = entity.getRole_().equals(Role.Admin);
             resultSet.updateBoolean("Is_Admin", isAdmin);
-            resultSet.updateString("login", entity.getLogin_());
+            resultSet.updateString("Login", entity.getLogin_());
             resultSet.updateString("Password", password);
             resultSet.updateString("Name", entity.getName_());
             resultSet.updateString("Surname", entity.getSurname_());
@@ -177,6 +187,8 @@ public class UserDao extends AbstractDao<User> {
             resultSet.updateRow();
         } catch(SQLException e){
             throw new DaoException(e);
+        } finally {
+            close(statement);
         }
         return true;
     }

@@ -4,7 +4,7 @@ public class User {
     public User() {
     }
 
-    public User(long ID_user_, Role role_, String login_, String password_, String name_, String surname_, String contacts_, int ID_image_) {
+    public User(long ID_user_, Role role_, String login_, String password_, String name_, String surname_, String contacts_, long ID_image_) {
         this.ID_user_ = ID_user_;
         this.role_ = role_;
         this.login_ = login_;

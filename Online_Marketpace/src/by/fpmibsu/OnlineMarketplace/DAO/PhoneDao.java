@@ -105,8 +105,9 @@ public class PhoneDao extends AbstractDao<Phone>{
     public int create(Phone entity) throws DaoException{
         String query = "INSERT INTO Phone VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int result;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, entity.getName_());
             preparedStatement.setString(2, entity.getManufacturer_());
             preparedStatement.setString(3, entity.getDescription_());
@@ -126,6 +127,8 @@ public class PhoneDao extends AbstractDao<Phone>{
             result = preparedStatement.executeUpdate();
         } catch(SQLException e){
             throw new DaoException(e);
+        } finally{
+            close(preparedStatement);
         }
         return result;
     }
