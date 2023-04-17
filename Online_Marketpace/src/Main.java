@@ -1,20 +1,10 @@
 import java.awt.*;
-import java.net.URI;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
 import java.sql.*;
 import java.util.*;
 import java.util.List;
-import java.util.Scanner;
 
-import by.fpmibsu.OnlineMarketplace.OtherClasses.PasswordHash;
 import by.fpmibsu.OnlineMarketplace.entity.*;
 import by.fpmibsu.OnlineMarketplace.DAO.*;
-import by.fpmibsu.OnlineMarketplace.entity.Image;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.lang.model.type.NullType;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,18 +17,16 @@ public class Main {
             for(Phone el : phones){
                 System.out.println(el);
             }
-            User user = new User(1, Role.Customer,"King","12345678","Roman", "Reigns", "no", 11);
-            UserDao userDao = new UserDao();
-            userDao.setConnection(connection);
-            System.out.println(PasswordHash.getHash(user.getPassword_()));
-            //userDao.create(user);
-            User user2 = userDao.findByLogin("King");
-            if(user2.getPassword_().equals(PasswordHash.getHash("12345678"))){
-                System.out.println("Equals");
-            }
-            if(!user2.getPassword_().equals(PasswordHash.getHash("12345679"))){
-                System.out.println("Doesn't equal");
-            }
+            ReviewDao reviewDao = new ReviewDao();
+            reviewDao.setConnection(connection);
+            Review review = new Review();
+            review.setID_user_(1);
+            review.setID_product_(1);
+            review.setReview_("Very good, but expensive");
+            //reviewDao.create(review);
+            System.out.println(reviewDao.findByProductId(1));
+            System.out.println(reviewDao.findByUserId(1));
+            System.out.println(reviewDao.findByUserIdAndProductId(1,1));
             connection.close();
         }catch (Exception e){
             System.out.println(e.getMessage());
