@@ -4,7 +4,7 @@ public class Catalog {
     public Catalog() {
     }
 
-    public Catalog(long ID_vendor_, long ID_product_, String category_, double price_, long number_in_stock_) {
+    public Catalog(long ID_vendor_, long ID_product_, String category_, double price_, int number_in_stock_) {
         this.ID_vendor_ = ID_vendor_;
         this.ID_product_ = ID_product_;
         this.category_ = category_;
@@ -44,11 +44,11 @@ public class Catalog {
         this.price_ = price_;
     }
 
-    public long getNumber_in_stock_() {
+    public int getNumber_in_stock_() {
         return number_in_stock_;
     }
 
-    public void setNumber_in_stock_(long number_in_stock_) {
+    public void setNumber_in_stock_(int number_in_stock_) {
         this.number_in_stock_ = number_in_stock_;
     }
 
@@ -67,5 +67,5 @@ public class Catalog {
     private long ID_product_;
     private String category_;
     private double price_;
-    private long number_in_stock_;
+    private int number_in_stock_;
 }
