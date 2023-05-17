@@ -1,16 +1,19 @@
 package by.fpmibsu.OnlineMarketplace.entity;
 
 public class Image {
-    public Image(int ID_image_, String link_) {
+    public Image() {
+    }
+
+    public Image(long ID_image_, String link_) {
         this.ID_image_ = ID_image_;
         this.link_ = link_;
     }
 
-    public int getID_image_() {
+    public long getID_image_() {
         return ID_image_;
     }
 
-    public void setID_image_(int ID_image_) {
+    public void setID_image_(long ID_image_) {
         this.ID_image_ = ID_image_;
     }
 
@@ -22,6 +25,14 @@ public class Image {
         this.link_ = link_;
     }
 
-    private int ID_image_;
+    @Override
+    public String toString() {
+        return "Image{" +
+                "ID_image_=" + ID_image_ +
+                ", link_='" + link_ + '\'' +
+                '}';
+    }
+
+    private long ID_image_;
     private String link_;
 }
