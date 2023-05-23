@@ -11,7 +11,8 @@ import java.sql.Statement;
 public class ImageDao extends AbstractDao<Image>{
     private static final String SQL_SELECT_ALL_IMAGES = "SELECT * FROM Image";
     private static final String SQL_SELECT_BY_ID = "SELECT * FROM Image WHERE ID_Image=?";
-    private static final String SQL_DELETE_BY_ID = "DELETE FROM Image WHERE ID_Image=?";
+    private static final String SQL_SELECT_BY_LINK = "SELECT * FROM Image WHERE =?";
+    private static final String SQL_DELETE_BY_ID = "DELETE FROM Image WHERE Image_Link=?";
     public ImageDao(){
         this.connection = null;
     }
@@ -56,6 +57,25 @@ public class ImageDao extends AbstractDao<Image>{
         return image;
     }
 
+    public Image findByLink(String link) throws DaoException {
+        PreparedStatement preparedStatement = null;
+        Image image = new Image();
+        try{
+            preparedStatement = connection.prepareStatement(SQL_SELECT_BY_LINK);
+            preparedStatement.setString(1, link);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                image.setID_image_(resultSet.getLong("ID_Image"));
+                image.setLink_(resultSet.getString("Image_Link"));
+            }
+        } catch(SQLException e){
+            throw new DaoException(e);
+        } finally{
+            close(preparedStatement);
+        }
+        return image;
+    }
+
     @Override
     public int delete(long id) throws DaoException {
         int result;
@@ -85,7 +105,8 @@ public class ImageDao extends AbstractDao<Image>{
         try{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,entity.getLink_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         }catch(SQLException e){
             throw new DaoException(e);
         } finally{

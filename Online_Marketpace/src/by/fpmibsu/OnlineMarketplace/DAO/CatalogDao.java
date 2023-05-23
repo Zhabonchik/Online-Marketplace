@@ -23,6 +23,11 @@ public class CatalogDao extends AbstractDaoSimple<Catalog>{
     String SQL_DELETE_BY_ID_VENDOR = "DELETE FROM Catalog WHERE ID_Vendor=?";
     String SQL_DELETE_BY_CATEGORY = "DELETE FROM Catalog WHERE Category=?";
     String SQL_DELETE_BY_ID_PRODUCT_AND_ID_VENDOR = "DELETE FROM Catalog WHERE ID_Product=? AND ID_Vendor=?";
+
+    public CatalogDao(){
+        this.connection = null;
+    }
+
     @Override
     public List<Catalog> findAll() throws DaoException {
         List<Catalog> Catalogs = new ArrayList<>();
@@ -259,7 +264,9 @@ public class CatalogDao extends AbstractDaoSimple<Catalog>{
             preparedStatement.setString(3, entity.getCategory_());
             preparedStatement.setDouble(4,entity.getPrice_());
             preparedStatement.setInt(5, entity.getNumber_in_stock_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            result = resultSet.getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally{

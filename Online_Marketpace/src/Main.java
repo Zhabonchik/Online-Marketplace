@@ -5,10 +5,11 @@ import java.util.List;
 
 import by.fpmibsu.OnlineMarketplace.entity.*;
 import by.fpmibsu.OnlineMarketplace.DAO.*;
+import org.json.simple.JSONObject;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         try {
             Connection connection = ConnectionCreator.createConnection();
             PhoneDao phoneDao = new PhoneDao();
@@ -30,6 +31,6 @@ public class Main {
             connection.close();
         }catch (Exception e){
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 }

@@ -17,6 +17,9 @@ public class VendorDao extends AbstractDao<Vendor>{
     private static final String SQL_SELECT_BY_ID = "SELECT * FROM Vendor WHERE ID_Vendor=?";
     private static final String SQL_SELECT_BY_LOGIN = "SELECT * FROM Vendor WHERE Login=?";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM Vendor WHERE ID_Vendor=?";
+    public VendorDao(){
+        this.connection = null;
+    }
     @Override
     public List<Vendor> findAll() throws DaoException {
         List<Vendor> vendors = new ArrayList<>();
@@ -132,7 +135,8 @@ public class VendorDao extends AbstractDao<Vendor>{
             preparedStatement.setString(4, entity.getSurname_());
             preparedStatement.setString(5, entity.getContacts_());
             preparedStatement.setLong(6, entity.getID_image_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally {

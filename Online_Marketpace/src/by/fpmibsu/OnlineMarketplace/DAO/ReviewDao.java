@@ -21,6 +21,10 @@ public class ReviewDao extends AbstractDaoSimple<Review> {
     private static final String SQL_DELETE_BY_ID_Product = "DELETE FROM Review WHERE ID_Product=?";
     private static final String SQL_DELETE_BY_ID_User_AND_ID_Product = "DELETE FROM Review WHERE ID_User=? AND ID_Product=?";
 
+    public ReviewDao(){
+        this.connection = null;
+    }
+
     @Override
     public List<Review> findAll() throws DaoException {
         List<Review> reviews = new ArrayList<>();
@@ -164,7 +168,8 @@ public class ReviewDao extends AbstractDaoSimple<Review> {
             preparedStatement.setLong(1, entity.getID_user_());
             preparedStatement.setLong(2, entity.getID_product_());
             preparedStatement.setString(3, entity.getReview_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally{

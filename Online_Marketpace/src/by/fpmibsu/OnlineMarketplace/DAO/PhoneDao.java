@@ -124,7 +124,8 @@ public class PhoneDao extends AbstractDao<Phone>{
             preparedStatement.setFloat(14, entity.getLength_());
             preparedStatement.setFloat(15, entity.getThickness_());
             preparedStatement.setFloat(16, entity.getWeight_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally{

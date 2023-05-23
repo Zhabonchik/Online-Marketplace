@@ -14,6 +14,9 @@ public class UserDao extends AbstractDao<User> {
     private static final String SQL_SELECT_BY_ID = "SELECT * FROM Users WHERE ID_User=?";
     private static final String SQL_SELECT_BY_LOGIN = "SELECT * FROM Users WHERE Login=?";
     private static final String SQL_DELETE_BY_ID = "DELETE FROM Users WHERE ID_User=?";
+    public UserDao(){
+        this.connection = null;
+    }
     @Override
     public List<User> findAll() throws DaoException {
         List<User> users = new ArrayList<>();
@@ -154,7 +157,8 @@ public class UserDao extends AbstractDao<User> {
             preparedStatement.setString(5, entity.getSurname_());
             preparedStatement.setString(6, entity.getContacts_());
             preparedStatement.setLong(7, entity.getID_image_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally {

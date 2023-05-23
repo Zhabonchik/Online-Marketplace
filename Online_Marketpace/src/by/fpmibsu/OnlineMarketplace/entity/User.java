@@ -82,6 +82,20 @@ public class User {
         return password.equals(this.password_);
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID_user_=" + ID_user_ +
+                ", role_=" + role_ +
+                ", login_='" + login_ + '\'' +
+                ", password_='" + password_ + '\'' +
+                ", name_='" + name_ + '\'' +
+                ", surname_='" + surname_ + '\'' +
+                ", contacts_='" + contacts_ + '\'' +
+                ", ID_image_=" + ID_image_ +
+                '}';
+    }
+
     private long ID_user_;
     private Role role_;
     private String login_;

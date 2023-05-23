@@ -20,6 +20,10 @@ public class OrderDao extends AbstractDaoSimple<Order>{
     String SQL_DELETE_BY_ID_USER_AND_ID_PRODUCT_AND_ID_DATE = "DELETE FROM Order WHERE ID_User=? AND ID_Product=? AND ID_Vendor=?";
     String SQL_DELETE_BY_ID_ORDER = "DELETE FROM Order WHERE ID_Order=?";
 
+    public OrderDao(){
+        this.connection = null;
+    }
+
     @Override
     public List<Order> findAll() throws DaoException {
         List<Order> orders = new ArrayList<>();
@@ -280,7 +284,8 @@ public class OrderDao extends AbstractDaoSimple<Order>{
             preparedStatement.setDate(6, entity.getDelivery_date_());
             preparedStatement.setString(7, entity.getDelivery_method_());
             preparedStatement.setString(8, entity.getComments_());
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            result = preparedStatement.getGeneratedKeys().getInt(1);
         } catch(SQLException e){
             throw new DaoException(e);
         } finally{
