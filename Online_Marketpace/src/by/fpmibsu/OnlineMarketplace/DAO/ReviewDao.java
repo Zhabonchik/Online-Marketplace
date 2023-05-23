@@ -160,16 +160,19 @@ public class ReviewDao extends AbstractDaoSimple<Review> {
     }
 
     public int create(Review entity) throws DaoException {
-        int result;
+        int result = 0;
         String query = "INSERT INTO Review VALUES (?, ?, ?)";
         PreparedStatement preparedStatement = null;
         try{
-            preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setLong(1, entity.getID_user_());
             preparedStatement.setLong(2, entity.getID_product_());
             preparedStatement.setString(3, entity.getReview_());
             preparedStatement.executeUpdate();
-            result = preparedStatement.getGeneratedKeys().getInt(1);
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if(rs != null && rs.next()){
+             result = rs.getInt(1);
+            }
         } catch(SQLException e){
             throw new DaoException(e);
         } finally{
@@ -180,7 +183,7 @@ public class ReviewDao extends AbstractDaoSimple<Review> {
 
     public boolean update(Review entity) throws DaoException {
         Statement statement = null;
-        int result;
+        int result = 0;
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM Reviews WHERE ID_User = %d AND ID_Product = %d", entity.getID_user_(), entity.getID_product_()));

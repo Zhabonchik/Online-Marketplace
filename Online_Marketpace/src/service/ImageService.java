@@ -30,7 +30,6 @@ public class ImageService extends Service<Image> {
         return jsonArray;
     }
 
-    @Override
     public JSONArray findById(HttpServletRequest request) throws DaoException {
         JSONArray jsonArray =  new JSONArray();
         JSONObject jsonObject = new JSONObject();
@@ -41,7 +40,7 @@ public class ImageService extends Service<Image> {
         return jsonArray;
     }
     public JSONArray findByLink(HttpServletRequest request) throws DaoException {
-        JSONArray jsonArray =  new JSONArray();
+        JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         Image image = imageDao.findByLink(request.getParameter("id"));
         jsonObject.put("id", image.getID_image_());
@@ -50,7 +49,6 @@ public class ImageService extends Service<Image> {
         return jsonArray;
     }
 
-    @Override
     public JSONArray deleteById(HttpServletRequest request) throws DaoException {
         JSONArray jsonArray =  new JSONArray();
         JSONObject jsonObject = new JSONObject();

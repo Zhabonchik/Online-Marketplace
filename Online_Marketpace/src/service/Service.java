@@ -15,9 +15,9 @@ public abstract class Service <T> {
         this.connection = connection;
     }
     public abstract JSONArray findAll() throws DaoException;
-    public abstract JSONArray findById(HttpServletRequest request) throws DaoException;
+    //public abstract JSONArray findById(HttpServletRequest request) throws DaoException;
     //public abstract JSONObject deleteEntity(HttpServletRequest request) throws DaoException;
-    public abstract JSONArray deleteById(HttpServletRequest request) throws DaoException;
+    //public abstract JSONArray deleteById(HttpServletRequest request) throws DaoException;
     public abstract JSONArray create(HttpServletRequest request) throws DaoException;
     public abstract JSONArray update(HttpServletRequest request) throws DaoException;
 

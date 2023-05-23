@@ -66,7 +66,39 @@ public class Controller {
                 break;
             case "review" :
                 try {
-
+                    Connection connection = ConnectionCreator.createConnection();
+                    ReviewService reviewService = new ReviewService(connection);
+                    switch(reqType){
+                        case "findAll":
+                            jsonArray = reviewService.findAll();
+                            break;
+                        case "findByUserId" :
+                            jsonArray = reviewService.findByUserId(request);
+                            break;
+                        case "findByProductId" :
+                            jsonArray = reviewService.findByProductId(request);
+                            break;
+                        case "findByUserIdAndProductId" :
+                            jsonArray = reviewService.findByUserIdAndProductId(request);
+                            break;
+                        case "deleteByUserId" :
+                            jsonArray = reviewService.deleteByUserId(request);
+                            break;
+                        case "deleteByProductId" :
+                            jsonArray = reviewService.deleteByProductId(request);
+                            break;
+                        case "deleteByUserIdAndProductId" :
+                            jsonArray = reviewService.deleteByUserIdAndProductId(request);
+                            break;
+                        case "create" :
+                            jsonArray = reviewService.create(request);
+                            break;
+                        case "update" :
+                            jsonArray = reviewService.update(request);
+                            break;
+                        default:
+                            throw new MyException("No such request for review");
+                    }
                 } catch(Exception exception){
                     throw new MyException("Something wrong with review");
                 }
