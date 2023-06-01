@@ -1,4 +1,4 @@
-Описание проекта.  
+Описание проекта:  
 
 Проект “Online Marketplace” представляет собой веб-сервис для продажи и покупки электронной техники. Сервис предназначен для людей, которые ищут товары, и для магазинов, желающих расширить свою клиентскую базу. Веб-сайт имеет удобный и интуитивно понятный пользовательский интерфейс. 
 
@@ -22,7 +22,10 @@
   
  ER Diagram:  
  
-![ER Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/Er-diagram.png)
+![ER Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/Er-diagram.png)  
+
 Use Case Diagram:  
+
+![Use Case Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/Use-case.png)
 
  
