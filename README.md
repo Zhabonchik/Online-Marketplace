@@ -32,4 +32,7 @@ Components Diagram:
 
 ![Components Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/component.png)
 
+Deployment Diagram:  
+
+![Deployment Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/deployment.png)
  
