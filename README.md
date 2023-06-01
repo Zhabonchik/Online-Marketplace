@@ -35,4 +35,8 @@ Components Diagram:
 Deployment Diagram:  
 
 ![Deployment Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/deployment.png)
+
+Package Diagram:  
+
+![Package Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/package.png)
  
