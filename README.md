@@ -28,4 +28,8 @@ Use Case Diagram:
 
 ![Use Case Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/Use-case.png)
 
+Components Diagram:  
+
+![Components Diagram](https://github.com/Zhabonchik/Online-Marketplace/blob/main/images/component.png)
+
  
